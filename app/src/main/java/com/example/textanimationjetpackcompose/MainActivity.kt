@@ -10,11 +10,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.textanimationjetpackcompose.ui.theme.TextAnimationJetpackComposeTheme
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,9 +52,17 @@ fun AnimationSample1(textItem: String) {
 //        println(previewText.value)
     }
 
+    LaunchedEffect(true) {
+        while (true) {
+            handleClick()
+            delay(100)
+        }
+    }
+
+
     Column {
         Text(text = previewText.value)
-        Button(onClick = { handleClick() } ) {
+        Button(onClick = { /* handleClick() */ } ) {
             Text(text = "ボタン")
         }
     }
